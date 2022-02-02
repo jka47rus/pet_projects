@@ -1,0 +1,31 @@
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class Turkey {
+    public static void main(String[] args) {
+        EmployeeKonstantin konsatantin = new EmployeeKonstantin(10721);
+    konsatantin.countSalary(18.5); // the indexing payout is equal to 18.5%
+    double salaryRub = konsatantin.getSalary() * 5.81; // lira to ruble exchange rate 5.81 ₽ (salary in rubles)
+
+        String tr = NumberFormat.getCurrencyInstance(new Locale ("tu", "tr")).format(konsatantin.getSalary());
+        String ru = NumberFormat.getCurrencyInstance(new Locale("ru", "ru")).format(salaryRub);
+        System.out.println(tr + "\n" + ru);
+          }
+    }
+    class EmployeeKonstantin{
+
+        private double salary;
+
+        public EmployeeKonstantin (double baseSalary){
+            this.salary = baseSalary;
+        }
+
+        public double getSalary() {
+            return salary;
+        }
+        
+        public void countSalary(double indexPercent){
+            double indexSalary = ((salary * indexPercent / 100) + salary)/8.64; // The starting base rate is conditional units to the Turkish lira 8.64
+            salary = indexSalary * 13.5; // dollar to lira exchange rate 13.5 try (salary in lira)
+            }
+    }
