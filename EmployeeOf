@@ -1,0 +1,46 @@
+import java.text.NumberFormat;
+import java.util.*;
+
+public class Test {
+    public static void main(String[] args) {
+         ArrayList<EmployeeOf> staff = new ArrayList<>();
+
+        EmployeeOf petr = new EmployeeOf ("Petr", 30000);
+        EmployeeOf alesha = new EmployeeOf ("Alesha", 50000);
+        staff.add(petr);
+        staff.add(alesha);
+        staff.add(new EmployeeOf("Evgeny", 40000));
+
+        for (EmployeeOf e : staff)
+            e.raiseSalary(5);
+
+
+        System.out.println(staff.get(1));
+    }}
+
+class EmployeeOf{
+
+    private  String name;
+    private  double salary;
+
+    public EmployeeOf (String name, double salary){
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public String getName(){
+        return name;}
+
+    public double getSalary(){
+        return salary;
+    }
+
+    public void raiseSalary(double byPercent) {
+        double raise = salary * byPercent /100;
+        salary+= raise;
+    }
+
+    public String toString(){
+        return name + ", " + NumberFormat.getCurrencyInstance(new Locale("ru", "ru")).format(salary);
+    }
+}
